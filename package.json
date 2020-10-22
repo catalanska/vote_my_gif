@@ -1,0 +1,15 @@
+{
+  "name": "github_gifs",
+  "version": "0.0.1",
+  "description": "Fetch gifs from github PRs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Javier Jiménez",
+  "license": "ISC",
+  "dependencies": {
+    "@octokit/rest": "^18.0.6",
+    "dotenv": "^8.2.0"
+  }
+}
