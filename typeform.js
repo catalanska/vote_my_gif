@@ -30,7 +30,7 @@ const mapGifToChoice = async (gif, idx) => {
 
 const mapGifToChoices = async (gifsList) => {
   return (await Promise.all(gifsList.map(mapGifToChoice))).filter(
-    (choice) => !!choice
+    (choice) => choice
   );
 };
 
@@ -77,6 +77,9 @@ async function createForm(gifsList) {
           },
         },
       ],
+      settings: {
+        is_public: true,
+      },
     },
   });
 }
