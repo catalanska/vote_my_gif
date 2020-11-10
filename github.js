@@ -1,8 +1,7 @@
 require("dotenv").config();
-
 const { Octokit } = require("@octokit/rest");
-const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
+const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 const org = "abacum-io";
 const gifRegexp = /\!\[\]\((.*gif)\)/gm;
 
@@ -62,12 +61,8 @@ const gifsFromRepo = async (repo) => {
 const gifsFromRepos = async (repos) =>
   Promise.all(repos.map(async (repo) => await gifsFromRepo(repo)));
 
-const getGifs = async () => {
+exports.getGifs = async () => {
   const { data } = await getRepos();
   const gifsList = await gifsFromRepos(data);
   return gifsList.flat();
 };
-
-getGifs()
-  .then((gifs) => console.log("finished", gifs))
-  .catch(console.log);
