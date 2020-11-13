@@ -1,5 +1,5 @@
 {
-  "name": "github_gifs",
+  "name": "Vote my Gif!",
   "version": "0.0.1",
   "description": "Fetch gifs from github PRs",
   "main": "index.js",
@@ -11,6 +11,8 @@
   "dependencies": {
     "@octokit/rest": "^18.0.6",
     "@typeform/api-client": "^1.6.6",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "nodemailer": "^6.4.16",
+    "nodemailer-smtp-transport": "^2.7.4"
   }
 }
