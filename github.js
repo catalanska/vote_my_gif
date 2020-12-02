@@ -18,11 +18,20 @@ const getPRsPage = async (repo, page) => {
   });
 };
 
+const uniquePrsList = (prs) => {
+  const uniqueList = [];
+  return prs.filter((pr) => {
+    const inList = uniqueList.includes(pr.html_url);
+    if (!inList) uniqueList.push(pr.html_url);
+    return !inList;
+  });
+};
+
 const getPRs = async (repo, page = 0, prs = []) => {
   const { data } = await getPRsPage(repo, page);
 
   if (data.length === 0) {
-    return prs;
+    return uniquePrsList(prs);
   }
   return await getPRs(repo, page + 1, prs.concat(data));
 };
