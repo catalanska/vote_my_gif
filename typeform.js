@@ -62,6 +62,25 @@ exports.createForm = async function createForm(gifsList) {
       ],
       fields: [
         {
+          title: "Your abacum @e-mail",
+          ref: "abacum-email",
+          properties: {},
+          validations: { required: true },
+          type: "email",
+          attachment: {
+            type: "image",
+            href: "https://images.typeform.com/images/sV9U6Gveej2R",
+          },
+          layout: {
+            type: "float",
+            attachment: {
+              type: "image",
+              href: "https://images.typeform.com/images/sV9U6Gveej2R",
+              properties: { focal_point: { x: 0, y: 0 } },
+            },
+          },
+        },
+        {
           ref: "gifs-selection",
           title: "*Pick your favourite gifs*",
           type: "picture_choice",
