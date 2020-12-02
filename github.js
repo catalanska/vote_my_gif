@@ -2,7 +2,7 @@ require("dotenv").config();
 const { Octokit } = require("@octokit/rest");
 
 const org = "abacum-io";
-const gifRegexp = /\!\[\]\((.*gif)\)/gm;
+const gifRegexp = /\!\[\]\((.*[gif|webp])\)/m;
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
 const getRepos = async () => octokit.repos.listForOrg({ org });
