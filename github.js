@@ -46,7 +46,7 @@ const infoFromPr = ({ user, body, html_url, title, created_at }) => {
 
 const withGifAndGivenMonth = (lastMonth, { gif, created_at }) => {
   const month = new Date(Date.parse(created_at)).getMonth();
-  return gif && month === lastMonth;
+  return gif && month === lastMonth - 1;
 };
 
 const gifsFromRepo = async (repo) => {

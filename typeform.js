@@ -38,7 +38,7 @@ exports.createForm = async function createForm(gifsList) {
 
   return typeformAPI.forms.create({
     data: {
-      title: `Vote my gif ${date.getMonth() + 1}/${date.getFullYear()}`,
+      title: `Vote my gif ${date.getMonth()}/${date.getFullYear()}`,
       workspace: { href: "https://api.typeform.com/workspaces/2RaL8p" },
       type: "form",
       theme: {
