@@ -53,16 +53,24 @@ const infoFromPr = ({ user, body, html_url, title, created_at }) => {
   };
 };
 
-const withGifAndGivenMonth = (lastMonth, { gif, created_at }) => {
+const withGifAndGivenMonth = ({ gif, created_at }) => {
   const month = new Date(Date.parse(created_at)).getMonth();
-  return gif && month === lastMonth - 1;
+  const year = new Date(Date.parse(created_at)).getFullYear();
+  const currentMonth = new Date().getMonth();
+  let lastMonth = currentMonth - 1;
+  let lastMonthYear = new Date().getFullYear();
+
+  if (currentMonth === 0) {
+    lastMonth = 11;
+    lastMonthYear = lastMonthYear - 1;
+  }
+  return gif && month === lastMonth && year === lastMonthYear;
 };
 
 const gifsFromRepo = async (repo) => {
-  const lastMonth = new Date().getMonth();
   const prs = await getPRs(repo.name);
   const mappedPrs = prs.map(infoFromPr);
-  const gifs = mappedPrs.filter((pr) => withGifAndGivenMonth(lastMonth, pr));
+  const gifs = mappedPrs.filter((pr) => withGifAndGivenMonth(pr));
 
   return gifs; // cleanup nulls
 };
