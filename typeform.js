@@ -1,7 +1,6 @@
 require("dotenv").config();
 const { createClient } = require("@typeform/api-client");
 
-const date = new Date();
 const typeformAPI = createClient({ token: process.env.TYPEFORM_TOKEN });
 
 const uploadGifToTypeform = async (url) => {
@@ -33,12 +32,12 @@ const mapGifToChoices = async (gifsList) => {
   );
 };
 
-exports.createForm = async function createForm(gifsList) {
+exports.createForm = async function createForm(gifsList, date) {
   const choices = await mapGifToChoices(gifsList);
 
   return typeformAPI.forms.create({
     data: {
-      title: `Vote my gif ${date.getMonth()}/${date.getFullYear()}`,
+      title: `Vote my gif ${date.getMonth() + 1}/${date.getFullYear()}`,
       workspace: { href: "https://api.typeform.com/workspaces/2RaL8p" },
       type: "form",
       theme: {
